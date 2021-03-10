@@ -28,7 +28,6 @@ h1, footer, .main-temp {
 
 footer {
     text-align: center;
-    font-size: 10px;
     font-family: 'Damion', cursive;
     font-size: 15px;
 }
@@ -147,3 +146,17 @@ input.citySearch:hover {
     margin: 30px 0;
 }
 
+.open-source-div {
+text-align: center;
+}
+
+.open-source-link {
+color: rgb(250, 240, 108);
+text-decoration: none;
+font-size: 14px;
+}
+
+.open-source-link:hover {
+    color:  rgba(245, 245, 245, 0.863);
+    text-decoration: underline;
+} 

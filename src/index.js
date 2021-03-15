@@ -83,7 +83,6 @@ function searchCity(city) {
   axios.get(apiUrl).then(displayCurrentWeather);
 }
 
-
 //  FORM SEARCH ENGINE
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", searchCityData);
@@ -92,12 +91,13 @@ function searchCityData(event) {
   event.preventDefault();
   let city = document.querySelector("#city-search-input").value;
   searchCity(city);
-
 }
 
 // GEOLOCATION SEARCH ENGINE
 
-document.querySelector("#location-btn").addEventListener("click", returnGeoLocation);
+document
+  .querySelector("#location-btn")
+  .addEventListener("click", returnGeoLocation);
 
 function returnGeoLocation(event) {
   event.preventDefault();
@@ -117,6 +117,7 @@ function getLocation(position) {
 // CURRENT WEATHER DATA
 
 function displayCurrentWeather(response) {
+  console.log(response.data);
   document.querySelector("h1").innerHTML = response.data.name;
   document.querySelector("#main-temp").innerHTML = Math.round(
     response.data.main.temp
@@ -130,6 +131,9 @@ function displayCurrentWeather(response) {
   );
   document.querySelector("#day-description").innerHTML =
     response.data.weather[0].description;
+let icon = response.data.weather[0].icon;
+   document.querySelector("#current-icon").setAttribute("src", `http://openweathermap.org/img/wn/${icon}@2x.png`);
+  
 }
 
 searchCity("Sunshine Coast");

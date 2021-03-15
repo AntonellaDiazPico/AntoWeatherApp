@@ -34,7 +34,9 @@ footer {
 
 
 .miniBody {
-    padding: 50px 25px 0;
+    padding: 50px 0;
+    max-width: 80%;
+    margin: 0 auto;
 }
 
 
@@ -91,10 +93,6 @@ input.citySearch:hover {
     padding: 0 50px;
 }
 
-.forecast {
-    text-align: center;
-    color: rgba(245, 245, 245, 0.863);
-}
 
 .todayWeather, 
 .todayTemp, 
@@ -132,26 +130,27 @@ input.citySearch:hover {
     
 }
 
-.todayEmoji {
-    font-size: 60px;
-    line-height: 50px;
+.current-icon {
+    margin-top: -35px;
+    margin-bottom: -20px;
 }
+
 .presentClimate {
-    font-size: 20px;
-    line-height: 30px;
-    padding-top: 7px;
+    font-size: 18px;
+    
 }
 
 .forecast {
     margin: 30px 0;
+    text-align: center;
+    color: rgba(245, 245, 245, 0.863);
 }
-
 .open-source-div {
-text-align: center;
+    text-align: center;
 }
 
 .open-source-link {
-color: rgb(250, 240, 108);
+    color: rgb(250, 240, 108);
 text-decoration: none;
 font-size: 14px;
 }

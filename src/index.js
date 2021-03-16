@@ -55,24 +55,26 @@ currentTime.innerHTML = currentTimeFunction(dayTime);
 
 // C° & F° TRANSFORMATION (need to improve!!!)
 
-function giveMeCelsius(event) {
+function displayCelsiusTemp(event) {
   event.preventDefault();
-  let changeTempToCelsius = document.querySelector("#main-temp");
-  changeTempToCelsius.innerHTML = 21;
+  let celsiusElement = document.querySelector("#main-temp");
+  celsiusElement.innerHTML = celsiusTemperature;
+}
+
+function displayFahrenheitTemp(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#main-temp");
+  let fahrenheitTemp = Math.round((celsiusTemperature * 9) / 5 + 32);
+  temperatureElement.innerHTML = fahrenheitTemp;
 }
 
 let tempInCel = document.querySelector("#celsius-link");
-tempInCel.addEventListener("click", giveMeCelsius);
+tempInCel.addEventListener("click", displayCelsiusTemp);
 
-function giveMeFahrenheit(event) {
-  event.preventDefault();
-  let changeTempToFahrenheit = document.querySelector("#main-temp");
-  let temperature = changeTempToFahrenheit.innerHTML;
-  changeTempToFahrenheit.innerHTML = Math.round((temperature * 9) / 5 + 32);
-}
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
 
-let tempInFar = document.querySelector("#fahrenheit-link");
-tempInFar.addEventListener("click", giveMeFahrenheit);
+let celsiusTemperature = null;
 
 // SEARCH ENGINE
 function searchCity(city) {
@@ -114,26 +116,28 @@ function getLocation(position) {
   axios.get(apiUrl).then(displayCurrentWeather);
 }
 
-// CURRENT WEATHER DATA
+// MAIN WEATHER DATA
 
 function displayCurrentWeather(response) {
-  console.log(response.data);
   document.querySelector("h1").innerHTML = response.data.name;
-  document.querySelector("#main-temp").innerHTML = Math.round(
-    response.data.main.temp
-  );
+  // celsiusTemperature used to be null
+  celsiusTemperature = Math.round(response.data.main.temp);
+  document.querySelector("#main-temp").innerHTML = celsiusTemperature;
+
   document.querySelector("#feels-like").innerHTML = Math.round(
     response.data.main.feels_like
   );
+
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
   document.querySelector("#day-description").innerHTML =
     response.data.weather[0].description;
-let icon = response.data.weather[0].icon;
-   document.querySelector("#current-icon").setAttribute("src", `http://openweathermap.org/img/wn/${icon}@2x.png`);
-  
+  let icon = response.data.weather[0].icon;
+  document
+    .querySelector("#current-icon")
+    .setAttribute("src", `http://openweathermap.org/img/wn/${icon}@2x.png`);
 }
 
 searchCity("Sunshine Coast");

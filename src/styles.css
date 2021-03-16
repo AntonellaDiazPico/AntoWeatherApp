@@ -122,12 +122,13 @@ input.citySearch:hover {
 }
 
 .cf-symbol a {
-    color: rgb(250, 240, 108);
+    cursor: default;
+    color: rgb(250, 240, 108, 0.7);
     text-decoration: none;
 }
-.cf-symbol a:hover {
-    color: rgb(255, 187, 0);
-    
+
+.cf-symbol .active {
+    color:  rgb(250, 240, 108);
 }
 
 .current-icon {

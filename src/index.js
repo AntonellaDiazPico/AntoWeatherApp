@@ -57,19 +57,23 @@ currentTime.innerHTML = currentTimeFunction(dayTime);
 
 function displayCelsiusTemp(event) {
   event.preventDefault();
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
   let celsiusElement = document.querySelector("#main-temp");
   celsiusElement.innerHTML = celsiusTemperature;
 }
 
 function displayFahrenheitTemp(event) {
   event.preventDefault();
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
   let temperatureElement = document.querySelector("#main-temp");
   let fahrenheitTemp = Math.round((celsiusTemperature * 9) / 5 + 32);
   temperatureElement.innerHTML = fahrenheitTemp;
 }
 
-let tempInCel = document.querySelector("#celsius-link");
-tempInCel.addEventListener("click", displayCelsiusTemp);
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemp);
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
